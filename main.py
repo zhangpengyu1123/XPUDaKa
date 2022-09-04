@@ -6,11 +6,21 @@ import time
 from urllib.parse import urlencode
 import os
 
+
+info = os.environ.get('INFO', '').split('\n')
+answers = os.environ.get('ANS', '').split('\n')
+agent = os.environ.get('AGENT', '')
+
+username = info[0]
+password = info[1]
+latitude = info[2]
+longitude = info[3]
+
 # 请求头
 headers = {
     "Accept-Encoding": "gzip, deflate, br",
     "Connection": "keep-alive",
-    "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36 MicroMessenger/7.0.9.501 NetType/WIFI MiniProgramEnv/Windows WindowsWechat",
+    "User-Agent": agent,
     "Content-Type": "application/x-www-form-urlencoded",
     "Content-Length": "2",
     "Host": "student.wozaixiaoyuan.com",
@@ -18,14 +28,6 @@ headers = {
     "host": "student.wozaixiaoyuan.com",
     "Accept": "application/json, text/plain, */*"
 }
-
-info = os.environ.get('INFO', '').split('\n')
-answers = os.environ.get('ANS', '').split('\n')
-
-username = info[0]
-password = info[1]
-latitude = info[2]
-longitude = info[3]
 
 
 # 定义用密码登录的函数
