@@ -110,7 +110,7 @@ class Do:
 
             time_t = int(round(time.time() * 1000))
 
-            content = f"陕西省_{time_t}_咸阳市"
+            content = f"{locationList[2]}_{time_t}_{locationList[0]}"
             signature = hashlib.sha256(content.encode('utf-8')).hexdigest()
 
             data["timestampHeader"] = time_t
