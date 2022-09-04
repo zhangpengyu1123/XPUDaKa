@@ -38,6 +38,7 @@ jobs:
         env:
           ANS: ${{secrets.ANS}}
           INFO: ${{secrets.INFO}}
+          AGENT: ${{secrets.AGENT}}
         run: |
           python -m pip install --upgrade pip
           python main.py
