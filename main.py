@@ -22,10 +22,16 @@ headers = {
 info = os.environ.get('INFO', '').split('\n')
 answers = os.environ.get('ANS', '').split('\n')
 
-username = info[0]
-password = info[1]
-latitude = info[2]
-longitude = info[3]
+# username = info[0]
+# password = info[1]
+# latitude = info[2]
+# longitude = info[3]
+
+latitude = "108.68504774305555"  # 维度
+longitude = "34.32218777126736"  # 经度
+username = "18220099903"  # 一般是手机号码【改】
+password = "1122334"  # 一般是6到8位纯数字密码【改】
+answers = ["0", "0", "36.5"]
 
 
 # 定义用密码登录的函数
@@ -121,7 +127,14 @@ class Do:
             print("当前时间--> ", datetime.datetime.now())
             data = urlencode(data)
             res = requests.post(url=url, headers=self.headers, data=data)  # 健康打卡提交
-            print("res-->", res.text)
+            res_text = res.json()
+            print("res-->", res_text)
+            if res_text["code"] == 0:
+                print("打卡成功")
+            elif res_text["code"] == 1:
+                print("message", res_text["message"])
+            else:
+                print("打卡失败")
 
 
 if __name__ == "__main__":
