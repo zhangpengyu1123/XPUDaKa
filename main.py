@@ -22,16 +22,10 @@ headers = {
 info = os.environ.get('INFO', '').split('\n')
 answers = os.environ.get('ANS', '').split('\n')
 
-# username = info[0]
-# password = info[1]
-# latitude = info[2]
-# longitude = info[3]
-
-latitude = "108.68504774305555"  # 维度
-longitude = "34.32218777126736"  # 经度
-username = "18220099903"  # 一般是手机号码【改】
-password = "1122334"  # 一般是6到8位纯数字密码【改】
-answers = ["0", "0", "36.5"]
+username = info[0]
+password = info[1]
+latitude = info[2]
+longitude = info[3]
 
 
 # 定义用密码登录的函数
