@@ -24,8 +24,8 @@ answers = os.environ.get('ANS', '').split('\n')
 
 username = info[0]
 password = info[1]
-latitude = info[3]
-longitude = info[4]
+latitude = info[2]
+longitude = info[3]
 
 
 # 定义用密码登录的函数
