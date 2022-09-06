@@ -34,6 +34,9 @@ https://lbs.amap.com/tools/picker
 
 xx地址（没有可以写无）
 
-#### 3. AGENT ,格式如下(推荐写自己手机的，这个需要通过抓包获取，实在没有可以填写这个，涉及设备型号识别):
+#### 3. AGENT ,格式如下:
 
 Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36 MicroMessenger/7.0.9.501 NetType/WIFI MiniProgramEnv/Windows WindowsWechat
+
+
+tips：如果你使用的是我上面提供的AGENT，那么有可能突然有一天，你在手机上再次打开小程序时会提示你输入账号密码，如果你输入了上号密码并成功进入下一个页面，那么有可能此脚本会失效（继续使用的解决方法就是在小程序里修改一个和原来一样的密码），所以推荐写自己手机的，这个需要通过抓包获取，实在没有可以填写这个，涉及设备型号识别
