@@ -34,6 +34,6 @@ https://lbs.amap.com/tools/picker
 
 xx地址（没有可以写无）
 
-#### 3. AGENT ,格式如下(没有可以填写这个，这个涉及设备型号识别,不过我推荐写自己手机的，这个需要通过抓包获取):
+#### 3. AGENT ,格式如下(推荐写自己手机的，这个需要通过抓包获取，实在没有可以填写这个，涉及设备型号识别):
 
 Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36 MicroMessenger/7.0.9.501 NetType/WIFI MiniProgramEnv/Windows WindowsWechat
