@@ -40,4 +40,5 @@ Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrom
 
 # 怎么获取 User-Agent ?
 IOS用户可以使用 Stream，进入app，安装证书，并开启抓包，随便打开网页（比如百度），在请求头里面可以找到 User-Agent 的信息
+
 安卓系统可以使用 [抓包精灵](https://www.coolapk.com/apk/com.minhui.networkcapture?ivk_sa=1024320u) ,重复上述操作即可获得
