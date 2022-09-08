@@ -51,7 +51,7 @@ def login(username, password):
 
 def getLoction(latitude, longitude):
     url = "https://apis.map.qq.com/ws/geocoder/v1/?key=A3YBZ-NC5RU-MFYVV-BOHND-RO3OT-ABFCR&location={},{}".format(
-        longitude, latitude)
+        latitude, longitude)
     res = requests.get(url)
     resList = res.json()
 
