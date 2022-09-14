@@ -31,6 +31,7 @@ headers = {
 
 # 定义用密码登录的函数
 def login(username, password):
+    print("使用登录模式获取JWSESSION")
     # 登陆接口
     loginUrl = "https://student.wozaixiaoyuan.com/basicinfo/mobile/login/username"
     url = loginUrl + "?username=" + username + "&password=" + password
@@ -45,8 +46,48 @@ def login(username, password):
     if res["code"] == 0:
         print("登陆成功")
         # 登录成功获取JWSESSION
-        jwsession = response.headers['JWSESSION']
-        return jwsession
+        new_jwsession = response.headers['JWSESSION']
+        print("登录成功，自动保存JWSESSION")
+        print("new_jwsession-->", new_jwsession)
+        with open("jwsession.txt", "w") as f:
+            f.write(new_jwsession)
+        return new_jwsession
+    else:
+        print("结果-->", res)
+        return False
+
+
+def reset():
+    with open("jwsession.txt", "r") as f:
+        jwsession = f.readline()
+
+    headers_reset = {
+        "Accept": "application/json, text/plain, */*",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Content-Type": "application/json;charset=UTF-8",
+        "Referer": "https://gw.wozaixiaoyuan.com/h5/mobile/basicinfo/index/my/changePassword",
+        "Host": "gw.wozaixiaoyuan.com",
+        "User-Agent": "Mozilla/5.0 (iPad; CPU OS 15_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.23(0x1800172f) NetType/WIFI Language/zh_CN miniProgram/wxce6d08f781975d91",
+        "Connection": "keep-alive",
+        "Accept-Language": "zh-CN,zh-Hans;q=0.9",
+        "JWSESSION": jwsession,
+        "Cookie": f"JWSESSION={jwsession}"
+
+    }
+    resetUrl = f"https://gw.wozaixiaoyuan.com/basicinfo/mobile/my/changePassword?newPassword={password}&oldPassword={password}&code="
+    res = requests.post(url=resetUrl, headers=headers_reset)
+
+    if res.json()["code"] == 0:
+        print("密码修改成功")
+        new_jwsession = res.headers["JWSESSION"]
+        print("new_jwsession-->", new_jwsession)
+        print("获取JWSESSION成功，自动保存")
+        with open("jwsession.txt", "w") as f:
+            f.write(new_jwsession)
+        return new_jwsession
+    else:
+        print("结果-->", res)
+        return False
 
 
 def getLoction(latitude, longitude):
@@ -83,6 +124,11 @@ class Do:
 
     def run(self):
         lo = login(username, password)
+        if lo:
+            self.headers["JWSESSION"] = lo
+        else:
+            print("登陆失败，使用上一次的JWSESSION登录\n")
+            self.headers["JWSESSION"] = reset()
 
         url = "https://student.wozaixiaoyuan.com/health/save.json"  # 健康打卡 提交地址
         locationList = getLoction(latitude, longitude)
@@ -111,9 +157,9 @@ class Do:
         data["timestampHeader"] = time_t
         data["signatureHeader"] = signature
 
-        self.headers["JWSESSION"] = lo
-        print("JWsession--> " + self.headers["JWSESSION"])
-        print("当前时间--> ", datetime.datetime.now())
+        print("\n正在打卡")
+        print("当前时间--> ", datetime.datetime.now().strftime("%Y-%m-%d"))
+
         data = urlencode(data)
         res = requests.post(url=url, headers=self.headers, data=data)  # 健康打卡提交
         res_text = res.json()
