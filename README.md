@@ -45,7 +45,11 @@ IOS用户可以使用 Stream，进入app，安装证书，并开启抓包，随�
 
 #### 4.TOKEN 用于更新项目文件
 #####怎么获取？
+
 右上角头像里点击 setting --> 左下角 Developer settings --> Personal access tokens --> Generate new token
+
 note：随便写
+
 Expiration：选择No expiration
+
 点击确定即可获得
