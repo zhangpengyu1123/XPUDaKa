@@ -8,7 +8,7 @@
 ## 4.需要用到高德地图api查询经纬度
 https://lbs.amap.com/tools/picker
 
-## 5.需要在 Settings --> Secrets --> action 点击 New repository secret，并增加三个字段
+## 5.需要在 Settings --> Secrets --> action 点击 New repository secret，并增加四个字段
 
 #### 1. INFO ,格式如下：
 
@@ -42,3 +42,10 @@ Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrom
 IOS用户可以使用 Stream，进入app，安装证书，并开启抓包，随便打开网页（比如百度），在请求头里面可以找到 User-Agent 的信息
 
 安卓系统可以使用 [抓包精灵](https://www.coolapk.com/apk/com.minhui.networkcapture?ivk_sa=1024320u) ,重复上述操作即可获得
+
+#### 4.TOKEN 用于更新项目文件
+#####怎么获取？
+右上角头像里点击 setting --> 左下角 Developer settings --> Personal access tokens --> Generate new token
+note：随便写
+Expiration：选择No expiration
+点击确定即可获得
